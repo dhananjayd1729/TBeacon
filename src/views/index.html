@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <form id="chart-form">
+        <label for="symbol">Symbol:</label>
+        <input type="text" id="symbol" name="symbol">
+        <label for="from_date">From Date:</label>
+        <input type="date" id="from_date" name="from_date">
+        <label for="to_date">To Date:</label>
+        <input type="date" id="to_date" name="to_date">
+        <button type="submit">Generate Chart</button>
+    </form>
+    <div id="chart-container">
+        <canvas id="line-chartcanvas"></canvas>
+    </div>
+
+    <script>
+        const form = document.getElementById("chart-form");
+        form.addEventListener("submit", (event) => {
+        console.log('Inside Event listener');
+        event.preventDefault();
+        const symbol = form.elements.symbol.value;
+        const from_date = form.elements.from_date.value;
+        const to_date = form.elements.to_date.value;
+        console.log(symbol);
+        const url = `http://localhost:3000/historical-data?symbol=${symbol}&from_date=${from_date}&to_date=${to_date}`;
+        // const url = "http://localhost:3000/historical-data?symbol=NIFTY 50&from_date=2017-01-02&to_date=2017-01-25";
+
+        fetch(url)
+         .then((response) => response.json())
+         .then((data) => {
+            console.log(data);
+            console.log(data.dates)
+            let dates = [];
+            let prices = [];
+            data.map((node) => {dates.push(node.date);
+            prices.push(node.price);})
+            console.log(dates);
+            console.log(prices);
+            const chartContainer = document.getElementById("line-chartcanvas");
+            const chartData = {
+                labels: dates,
+                datasets: [{
+                    label: symbol,
+                    data: prices
+                }]
+            };
+        
+            const chart = new Chart(chartContainer, {
+                type: 'line',
+                data: chartData,
+                // options: chartOptions
+            });
+        });
+});
+    </script>
+</body>
+</html>
+
+
+
+
+  
