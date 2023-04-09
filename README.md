@@ -16,7 +16,7 @@ Start the server. You can start the server by running:
 ```
 npm start
 ```
-This assumes that your project has a start script in your package.json file that starts the server.
+This assumes that your project has a start script in your package.json file that starts the server. Before starting the server the commented part need to be uncommented and run on your machine so that you can insert the data from csv file to sqlite database.
 
 Open the application: Once the server is running, you can open the application in your browser by navigating to :
 ```
