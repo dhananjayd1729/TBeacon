@@ -1,6 +1,7 @@
 # TBeacon
 
 ## If you want to built this project please follow instructions. 
+Navigate to your desired folder where you want to built this project.
 
 ```
 git clone git@github.com:dhananjayd1729/TBeacon.git
@@ -18,7 +19,7 @@ npm start
 ```
 This assumes that your project has a start script in your package.json file that starts the server. Before starting the server the commented part need to be uncommented and run on your machine so that you can insert the data from csv file to sqlite database.
 
-Open the application: Once the server is running, you can open the application in your browser by navigating to :
+Open the application: Once the server is running, you can open the backend get api in your web-browser or POSTMAN by navigating to :
 ```
 http://localhost:3000/historical-data
 ```
@@ -30,8 +31,8 @@ localhost:3000/historical-data?symbol=NIFTY 50&from_date=2017-01-02 00:00:00+05:
 ```
 Now you have get api's endpoints and jsonified data.
 
-For frontend part go from src to views folder and run index.html file.You will have a form which asks for from_date, to_date and symbol where symbol can be nifty bank and nifty 50.  
+For frontend part go from src to views folder and run index.html file.You will have a form which asks for from_date, to_date and symbol where symbol can be 'NIFTY BANK' and 'NIFTY 50'.  
 You will see a chart with prices on y axis and dates on x-axis.
 ```
-file:///<Your>/<Path_to>/<project_directory>/src/views/index.html
+file://<Your>/<file_Path_to>/<project_directory>/src/views/index.html
 ```
